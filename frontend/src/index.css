@@ -1,109 +1,102 @@
 @import "tailwindcss";
 
 :root {
-  /* 亮白高级主题 */
-  --color-bg-primary: #fafbfc;
-  --color-bg-secondary: #f3f4f6;
-  --color-bg-card: #ffffff;
-  --color-bg-card-hover: #f8f9fb;
-  --color-border: #e5e7eb;
-  --color-border-accent: #d1d5db;
-  --color-text-primary: #111827;
-  --color-text-secondary: #4b5563;
-  --color-text-muted: #9ca3af;
-  --color-accent-cyan: #0891b2;
-  --color-accent-magenta: #a21caf;
-  --color-accent-amber: #d97706;
-  --color-accent-green: #059669;
-  --color-accent-red: #dc2626;
-  --color-glow-cyan: rgba(8, 145, 178, 0.08);
-  --color-glow-magenta: rgba(162, 28, 175, 0.08);
-  --color-glow-amber: rgba(217, 119, 6, 0.08);
-  --color-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
-  --color-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
-  --color-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.08);
-  --font-sans: 'Inter', 'Noto Sans SC', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Noto Sans SC', monospace;
-  --raduis-sm: 6px;
-  --raduis-md: 8px;
-  --raduis-lg: 12px;
-  --raduis-xl: 16px;
-  --raduis-full: 9999px;
+  /* ── Apple 设计语言 ── */
+  --color-bg-primary: #f5f5f7;
+  --color-bg-secondary: #ffffff;
+  --color-bg-tertiary: #fafafa;
+  --color-text-primary: #1d1d1f;
+  --color-text-secondary: #6e6e73;
+  --color-text-tertiary: #86868b;
+  --color-border: #d2d2d7;
+  --color-border-light: #e8e8ed;
+  --color-accent: #0071e3;
+  --color-accent-hover: #0077ed;
+  --color-green: #34c759;
+  --color-orange: #ff9500;
+  --color-red: #ff3b30;
+  --color-purple: #af52de;
+  --color-teal: #5ac8fa;
+
+  --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Noto Sans SC', system-ui, sans-serif;
+  --font-mono: 'SF Mono', 'JetBrains Mono', 'Noto Sans SC', monospace;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 
 body {
   font-family: var(--font-sans);
   background: var(--color-bg-primary);
   color: var(--color-text-primary);
   min-height: 100vh;
-  -webkit-font-smoothing: antialiased;
+  letter-spacing: -0.01em;
 }
 
-#root {
-  min-height: 100vh;
-  display: flex;
-}
+#root { min-height: 100vh; display: flex; }
 
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
+::-webkit-scrollbar-thumb { background: #c7c7cc; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #aeaeb2; }
 
-.glass {
-  background: var(--color-bg-card);
-  border: 1px solid var(--color-border);
-  border-radius: var(--raduis-lg);
-  box-shadow: var(--color-shadow-sm);
+/* ── Apple 卡片 ── */
+.apple-card {
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+.apple-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
 }
 
-.glass:hover {
-  border-color: var(--color-border-accent);
-  box-shadow: var(--color-shadow-md);
+/* ── Apple 玻璃效果 ── */
+.apple-glass {
+  background: rgba(255,255,255,0.72);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 0.5px solid rgba(0,0,0,0.08);
 }
 
-.glow-cyan { box-shadow: 0 0 0 2px var(--color-glow-cyan), 0 4px 16px var(--color-glow-cyan); }
-.glow-magenta { box-shadow: 0 0 0 2px var(--color-glow-magenta), 0 4px 16px var(--color-glow-magenta); }
-.glow-amber { box-shadow: 0 0 0 2px var(--color-glow-amber), 0 4px 16px var(--color-glow-amber); }
-
-@keyframes pulse-glow {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
-}
-
-@keyframes dash-flow {
-  to { stroke-dashoffset: -20; }
-}
-
-@keyframes node-pulse {
-  0% { box-shadow: 0 0 0 0 rgba(8, 145, 178, 0.3); }
-  70% { box-shadow: 0 0 0 12px rgba(8, 145, 178, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(8, 145, 178, 0); }
-}
-
-@keyframes fade-in-up {
-  from { opacity: 0; transform: translateY(12px); }
+/* ── 动画 ── */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
-
-@keyframes slide-in-right {
-  from { opacity: 0; transform: translateX(100%); }
-  to { opacity: 1; transform: translateX(0); }
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
-
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
 @keyframes shimmer {
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
 }
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(0,113,227,0.3); }
+  70% { box-shadow: 0 0 0 12px rgba(0,113,227,0); }
+  100% { box-shadow: 0 0 0 0 rgba(0,113,227,0); }
+}
+.animate-fade-up { animation: fade-up 0.5s ease-out; }
+.animate-fade-in { animation: fade-in 0.4s ease-out; }
+.animate-scale-in { animation: scale-in 0.3s ease-out; }
+.animate-pulse-ring { animation: pulse-ring 2s ease-in-out infinite; }
 
-.animate-pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
-.animate-node-pulse { animation: node-pulse 1.5s ease-in-out infinite; }
-.animate-fade-in-up { animation: fade-in-up 0.4s ease-out; }
-.animate-slide-in-right { animation: slide-in-right 0.3s ease-out; }
-
+/* ── 骨架屏 ── */
 .skeleton {
-  background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%);
+  background: linear-gradient(90deg, #e8e8ed 25%, #f5f5f7 50%, #e8e8ed 75%);
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
+  border-radius: var(--radius-sm);
 }

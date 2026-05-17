@@ -1,0 +1,16 @@
+node_modules/
+dist/
+__pycache__/
+.venv/
+*.pyc
+.env
+workspaces/
+uploads/
+*.log
+.DS_Store
+
+# 软著申请材料（不纳入版本管理）
+软著申请材料/
+软著申请材料.txt
+generate_doc_pdf.py
+generate_source_pdf.py

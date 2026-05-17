@@ -1,0 +1,19 @@
+# Render 部署配置
+# 一键部署：在Render Dashboard导入此仓库即可
+services:
+  - type: web
+    name: pipeline-v2-agent
+    runtime: python
+    region: singapore
+    plan: free
+    buildCommand: |
+      pip install -r backend/requirements.txt
+      cd frontend && npm install && npm run build
+    startCommand: cd backend && uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11"
+      - key: PV2_PIPELINE_SRC
+        value: ""
+      - key: DEEPSEEK_API_KEY
+        sync: false

@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+:root {
+  --color-bg-primary: #0a0a0f;
+  --color-bg-secondary: #0f0f18;
+  --color-bg-card: #141418;
+  --color-bg-card-hover: #18181f;
+  --color-border: #1e1e2a;
+  --color-border-accent: #2a2a3a;
+  --color-text-primary: #e8e8ed;
+  --color-text-secondary: #9898a8;
+  --color-text-muted: #606078;
+  --color-accent-cyan: #00d4ff;
+  --color-accent-magenta: #e040fb;
+  --color-accent-amber: #ffab00;
+  --color-accent-green: #00e676;
+  --color-accent-red: #ff5252;
+  --color-glow-cyan: rgba(0, 212, 255, 0.15);
+  --color-glow-magenta: rgba(224, 64, 251, 0.15);
+  --color-glow-amber: rgba(255, 171, 0, 0.15);
+  --font-sans: 'Inter', 'Noto Sans SC', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Noto Sans SC', monospace;
+  --raduis-sm: 6px;
+  --raduis-md: 8px;
+  --raduis-lg: 12px;
+  --raduis-xl: 16px;
+  --raduis-full: 9999px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+}
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--color-border-accent); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-text-muted); }
+
+.glass {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  backdrop-filter: blur(12px);
+  border-radius: var(--raduis-lg);
+}
+
+.glass:hover {
+  border-color: var(--color-border-accent);
+  background: var(--color-bg-card-hover);
+}
+
+.glow-cyan { box-shadow: 0 0 20px var(--color-glow-cyan), 0 0 40px var(--color-glow-cyan); }
+.glow-magenta { box-shadow: 0 0 20px var(--color-glow-magenta), 0 0 40px var(--color-glow-magenta); }
+.glow-amber { box-shadow: 0 0 20px var(--color-glow-amber), 0 0 40px var(--color-glow-amber); }
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes dash-flow {
+  to { stroke-dashoffset: -20; }
+}
+
+@keyframes node-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(0, 212, 255, 0.4); }
+  70% { box-shadow: 0 0 0 12px rgba(0, 212, 255, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 212, 255, 0); }
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-in-right {
+  from { opacity: 0; transform: translateX(100%); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
+.animate-node-pulse { animation: node-pulse 1.5s ease-in-out infinite; }
+.animate-fade-in-up { animation: fade-in-up 0.4s ease-out; }
+.animate-slide-in-right { animation: slide-in-right 0.3s ease-out; }
+
+.skeleton {
+  background: linear-gradient(90deg, var(--color-bg-card) 25%, var(--color-bg-card-hover) 50%, var(--color-bg-card) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}

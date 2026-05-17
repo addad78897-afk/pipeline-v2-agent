@@ -8,12 +8,17 @@ import os
 # 项目根目录（backend/ 的上一级）
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# 现有管线源码路径（仅开发环境）
-PIPELINE_SRC = os.environ.get(
-    "PV2_PIPELINE_SRC",
-    os.path.expanduser("~/Desktop/管线V2.0_原始项目/管线V2.0_源码")
+# 脚本路径（优先查环境变量 → 项目内 → 原始项目）
+SCRIPTS_DIR = os.environ.get(
+    "PV2_SCRIPTS_DIR",
+    os.path.join(PROJECT_ROOT, "pipeline", "scripts")
 )
-SCRIPTS_DIR = os.path.join(PIPELINE_SRC, "002_脚本")
+# 如果项目内脚本不存在，回退到原始项目路径
+if not os.path.isdir(SCRIPTS_DIR):
+    SCRIPTS_DIR = os.path.join(
+        os.path.expanduser("~/Desktop/管线V2.0_原始项目/管线V2.0_源码"),
+        "002_脚本"
+    )
 
 # 工作区根目录（生产环境使用项目内路径）
 WORKSPACE_ROOT = os.environ.get(

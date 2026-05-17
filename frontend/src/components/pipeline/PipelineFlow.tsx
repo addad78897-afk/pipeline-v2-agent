@@ -10,9 +10,9 @@ interface PipelineFlowProps {
 }
 
 const colorMap = {
-  cyan: { border: 'border-cyan-400/30', bg: 'bg-cyan-500/5', text: 'text-cyan-400', glow: 'glow-cyan' },
-  magenta: { border: 'border-fuchsia-400/30', bg: 'bg-fuchsia-500/5', text: 'text-fuchsia-400', glow: 'glow-magenta' },
-  amber: { border: 'border-amber-400/30', bg: 'bg-amber-500/5', text: 'text-amber-400', glow: 'glow-amber' },
+  cyan: { border: 'border-cyan-200', bg: 'bg-cyan-50/50', text: 'text-cyan-700', glow: 'glow-cyan' },
+  magenta: { border: 'border-purple-200', bg: 'bg-purple-50/50', text: 'text-purple-700', glow: 'glow-magenta' },
+  amber: { border: 'border-amber-200', bg: 'bg-amber-50/50', text: 'text-amber-700', glow: 'glow-amber' },
 }
 
 export function PipelineFlow({ steps, activeStep, onStepClick }: PipelineFlowProps) {
@@ -29,14 +29,14 @@ export function PipelineFlow({ steps, activeStep, onStepClick }: PipelineFlowPro
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: phase.id * 0.15 }}
-            className={cn('rounded-2xl border p-5', colors.border, colors.bg)}
+            className={cn('rounded-2xl border p-5 shadow-sm', colors.border, colors.bg)}
           >
             <div className="flex items-center gap-3 mb-4">
               <span className={cn('text-xs font-semibold px-2.5 py-1 rounded-full border', colors.border, colors.text)}>
                 阶段 {phase.id}
               </span>
               <span className={cn('text-sm font-medium', colors.text)}>{phase.name}</span>
-              <span className="text-xs text-[var(--color-text-muted)] ml-auto">
+              <span className="text-xs text-gray-400 ml-auto">
                 {completedCount}/{phaseSteps.length} 完成
               </span>
             </div>
@@ -51,7 +51,7 @@ export function PipelineFlow({ steps, activeStep, onStepClick }: PipelineFlowPro
                     phaseColor={phase.color}
                   />
                   {i < phaseSteps.length - 1 && (
-                    <div className={cn('w-6 h-0.5 mx-1 rounded', step.status === 'COMPLETED' ? 'bg-cyan-400/50' : 'bg-white/10')} />
+                    <div className={cn('w-6 h-0.5 mx-1 rounded-full', step.status === 'COMPLETED' ? 'bg-cyan-400' : 'bg-gray-200')} />
                   )}
                 </div>
               ))}

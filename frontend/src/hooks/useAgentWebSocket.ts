@@ -14,7 +14,7 @@ export function useAgentWebSocket(jobId: string | null) {
     if (!jobId) return
 
     const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws'
-    const ws = new WebSocket(`${protocol}://${window.location.host}/ws/agent/${jobId}`)
+    const ws = new WebSocket(`${protocol}://${window.location.host}/api/ws/agent/${jobId}`)
 
     ws.onopen = () => {
       setConnected(true)

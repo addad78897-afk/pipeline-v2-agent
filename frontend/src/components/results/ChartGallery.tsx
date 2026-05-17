@@ -1,5 +1,4 @@
 import { Card } from '@/components/shared/Card'
-import { EmptyState } from '@/components/shared/LoadingSkeleton'
 import { Image } from 'lucide-react'
 import { useState } from 'react'
 
@@ -21,14 +20,14 @@ export function ChartGallery({ jobId: _ }: ChartGalleryProps) {
     <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
       {MOCK_CHARTS.map((chart) => (
         <Card key={chart.name} className="p-4 cursor-pointer group" onClick={() => setZoomed(chart.name)}>
-          <div className="aspect-video rounded-lg bg-white/5 flex items-center justify-center mb-3 group-hover:bg-white/10 transition-colors">
+          <div className="aspect-video rounded-lg bg-gray-100 flex items-center justify-center mb-3 group-hover:bg-gray-200 transition-colors border border-gray-200">
             <div className="text-center">
-              <Image size={24} className="mx-auto mb-1 text-[var(--color-text-muted)]" />
-              <span className="text-[10px] text-[var(--color-text-muted)]">点击放大</span>
+              <Image size={24} className="mx-auto mb-1 text-gray-400" />
+              <span className="text-[10px] text-gray-400">点击放大</span>
             </div>
           </div>
-          <div className="text-sm font-medium">{chart.name}</div>
-          <div className="text-xs text-[var(--color-text-muted)] mt-0.5">{chart.desc}</div>
+          <div className="text-sm font-semibold text-gray-700">{chart.name}</div>
+          <div className="text-xs text-gray-400 mt-0.5">{chart.desc}</div>
         </Card>
       ))}
     </div>

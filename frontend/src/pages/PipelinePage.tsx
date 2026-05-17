@@ -27,8 +27,8 @@ export function PipelinePage() {
     <div className="flex h-full">
       <div className="flex-1 overflow-auto p-6">
         {jobStatus === 'COMPLETED' && (
-          <div className="mb-4 p-4 rounded-xl bg-emerald-500/10 border border-emerald-400/20 text-center">
-            <p className="text-sm text-emerald-400">管线执行完成！即将跳转到结果页面...</p>
+          <div className="mb-4 p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-center">
+            <p className="text-sm text-emerald-700 font-medium">管线执行完成！即将跳转到结果页面...</p>
           </div>
         )}
         <PipelineFlow

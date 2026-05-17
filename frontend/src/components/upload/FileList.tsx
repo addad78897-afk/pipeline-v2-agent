@@ -22,7 +22,7 @@ export function FileList({ files, onRemove }: FileListProps) {
       </div>
       <div className="space-y-1 max-h-64 overflow-auto">
         {files.map((file, i) => (
-          <div key={`${file.name}-${i}`} className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/5 transition-colors group">
+          <div key={`${file.name}-${i}`} className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-50 transition-colors group">
             <FileText size={16} className="text-[var(--color-text-muted)] shrink-0" />
             <span className="text-sm text-[var(--color-text-primary)] truncate flex-1">{file.name}</span>
             <span className="text-xs text-[var(--color-text-muted)] shrink-0">{formatSize(file.size)}</span>

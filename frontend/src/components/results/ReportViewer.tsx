@@ -16,14 +16,14 @@ export function ReportViewer({ jobId: _ }: ReportViewerProps) {
     <div className="space-y-3">
       {REPORTS.map((report) => (
         <Card key={report.name} className="p-4 flex items-center gap-4">
-          <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center shrink-0">
-            <FileText size={20} className="text-cyan-400" />
+          <div className="w-10 h-10 rounded-lg bg-cyan-50 flex items-center justify-center shrink-0 border border-cyan-100">
+            <FileText size={20} className="text-cyan-600" />
           </div>
           <div className="flex-1 min-w-0">
-            <div className="text-sm font-medium">{report.name}</div>
-            <div className="text-xs text-[var(--color-text-muted)] mt-0.5">{report.desc}</div>
+            <div className="text-sm font-semibold text-gray-700">{report.name}</div>
+            <div className="text-xs text-gray-400 mt-0.5">{report.desc}</div>
           </div>
-          <button className="text-xs px-3 py-1.5 rounded-lg bg-white/10 text-[var(--color-text-secondary)] hover:bg-white/20 transition-colors">
+          <button className="text-xs px-3 py-1.5 rounded-lg bg-gray-900 text-white hover:bg-gray-800 font-medium transition-colors">
             查看
           </button>
         </Card>

@@ -11,7 +11,7 @@ export function useWebSocket(jobId: string | null) {
     if (!jobId) return
 
     const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws'
-    const ws = new WebSocket(`${protocol}://${window.location.host}/ws/pipeline/${jobId}`)
+    const ws = new WebSocket(`${protocol}://${window.location.host}/api/ws/pipeline/${jobId}`)
 
     ws.onopen = () => {
       setConnected(true)

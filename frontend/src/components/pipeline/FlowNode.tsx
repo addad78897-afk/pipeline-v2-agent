@@ -64,10 +64,10 @@ export function FlowNode({ step, isActive, onClick, phaseColor }: FlowNodeProps)
           size={18}
           className={cn(
             step.status === 'RUNNING' && 'animate-spin',
-            step.status === 'COMPLETED' && 'text-emerald-400',
-            step.status === 'FAILED' && 'text-red-400',
-            step.status === 'PENDING' && 'text-[var(--color-text-muted)]',
-            isActive && step.status !== 'COMPLETED' && 'text-cyan-400'
+            step.status === 'COMPLETED' && 'text-emerald-600',
+            step.status === 'FAILED' && 'text-red-500',
+            step.status === 'PENDING' && 'text-gray-400',
+            isActive && step.status !== 'COMPLETED' && 'text-cyan-600'
           )}
         />
         {/* Active glow ring */}

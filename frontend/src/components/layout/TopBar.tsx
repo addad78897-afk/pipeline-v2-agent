@@ -25,26 +25,26 @@ export function TopBar() {
   if (isResults) title = '分析结果'
 
   return (
-    <header className="h-14 shrink-0 border-b border-[var(--color-border)] flex items-center justify-between px-6 bg-[var(--color-bg-primary)]/80 backdrop-blur-sm">
+    <header className="h-14 shrink-0 border-b border-gray-200 flex items-center justify-between px-6 bg-white/90 backdrop-blur-sm">
       <div className="flex items-center gap-3">
-        <h1 className="text-sm font-medium text-[var(--color-text-primary)]">{title}</h1>
+        <h1 className="text-sm font-semibold text-gray-900">{title}</h1>
         {isPipeline && jobStatus && (
           <Badge status={jobStatus} />
         )}
         {isAgent && (
-          <span className="text-[11px] px-2 py-0.5 rounded bg-gradient-to-r from-cyan-500/10 to-fuchsia-500/10 text-fuchsia-400 border border-fuchsia-400/20 font-medium">
+          <span className="text-[11px] px-2 py-0.5 rounded-md bg-gradient-to-r from-cyan-50 to-purple-50 text-purple-600 border border-purple-200 font-medium">
             Agent {agentStatus === 'RUNNING' ? '运行中' : agentStatus === 'COMPLETED' ? '完成' : ''}
           </span>
         )}
       </div>
       <div className="flex items-center gap-3">
         {isPipeline && currentStep > 0 && (
-          <span className="text-xs text-[var(--color-text-muted)]">
+          <span className="text-xs text-gray-400">
             Step {currentStep}/16
           </span>
         )}
         {isAgent && documentsProcessed > 0 && (
-          <span className="text-xs text-[var(--color-text-muted)]">
+          <span className="text-xs text-gray-400 font-medium">
             {documentsProcessed}/{fileCount} 份
           </span>
         )}

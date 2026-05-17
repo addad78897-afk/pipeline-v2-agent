@@ -12,6 +12,13 @@ export function PipelinePage() {
   const { currentStep, steps, jobStatus } = usePipelineStore()
   const [selectedStep, setSelectedStep] = useState<number | null>(null)
 
+  // 页面加载初始化
+  useEffect(() => {
+    if (jobId && !usePipelineStore.getState().jobId) {
+      usePipelineStore.getState().setJob(jobId)
+    }
+  }, [jobId])
+
   // 连接WebSocket获取实时进度
   useWebSocket(jobId ?? null)
 

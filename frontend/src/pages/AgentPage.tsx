@@ -29,6 +29,13 @@ export function AgentPage() {
   const [selectedDocIdx, setSelectedDocIdx] = useState<number | null>(null)
   const thoughtEndRef = useRef<HTMLDivElement>(null)
 
+  // 页面加载时初始化store
+  useEffect(() => {
+    if (jobId && !store.jobId) {
+      useAgentStore.setState({ jobId, jobStatus: 'QUEUED', fileCount: 0 })
+    }
+  }, [jobId])
+
   useAgentWebSocket(jobId ?? null)
 
   useEffect(() => {
@@ -136,10 +143,10 @@ export function AgentPage() {
         <AnimatePresence mode="wait">
           {activeTab === 'thoughts' && (
             <motion.div key="thoughts" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="space-y-3 max-w-3xl">
-              {store.thoughts.length === 0 && store.jobStatus === 'QUEUED' && (
+              {store.thoughts.length === 0 && (store.jobStatus === 'QUEUED' || !store.jobStatus) && (
                 <div className="text-center py-16">
-                  <Brain size={40} className="mx-auto mb-4 text-gray-300" />
-                  <p className="text-sm text-gray-500">等待Agent启动...</p>
+                  <Brain size={40} className="mx-auto mb-4 text-gray-300 animate-pulse" />
+                  <p className="text-sm text-gray-500 font-medium">Agent 正在连接...</p>
                   <p className="text-xs text-gray-400 mt-1">Agent将逐份感知文书结构，自主规划分析策略</p>
                 </div>
               )}

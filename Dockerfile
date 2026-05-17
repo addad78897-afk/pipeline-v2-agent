@@ -2,11 +2,11 @@
 # Railway 自动检测 Dockerfile 并构建
 FROM python:3.11-slim
 
-# 安装 Node.js（用于前端构建）
-RUN apt-get update && apt-get install -y curl && \
+# 安装 Node.js + 中文字体（matplotlib可视化需要）
+RUN apt-get update && apt-get install -y curl fonts-noto-cjk && \
     curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
     apt-get install -y nodejs && \
-    apt-get clean
+    apt-get clean && fc-cache -fv
 
 WORKDIR /app
 

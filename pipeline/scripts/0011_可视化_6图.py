@@ -1,4 +1,5 @@
 import pandas as pd
+import matplotlib
 import matplotlib.pyplot as plt
 import seaborn as sns
 import json
@@ -19,9 +20,17 @@ if _PV2:
 # ==========================================
 # 1. 环境配置与中文字体修复
 # ==========================================
-plt.rcParams['font.sans-serif'] = ['Arial Unicode MS']
+# 跨平台中文字体（Mac: Arial Unicode MS / Linux: Noto Sans CJK SC）
+_FONT_CANDIDATES = ['Arial Unicode MS', 'Noto Sans CJK SC', 'WenQuanYi Micro Hei', 'SimHei', 'sans-serif']
+_available = {f.name for f in matplotlib.font_manager.fontManager.ttflist}
+for _f in _FONT_CANDIDATES:
+    if _f in _available:
+        plt.rcParams['font.sans-serif'] = [_f]
+        break
+else:
+    plt.rcParams['font.sans-serif'] = ['sans-serif']
 plt.rcParams['axes.unicode_minus'] = False
-sns.set_theme(style="whitegrid", font='Arial Unicode MS')
+sns.set_theme(style="whitegrid")
 
 BASE_PATH = _PV2 + "/" if _PV2 else "/Users/weiyueshao/Desktop/pipeline_v2/"
 
